@@ -15,7 +15,6 @@ import { AppService } from './app.service';
         /* List of entities here */
       ],
       synchronize: true,
-      autoLoadEntities: true,
     }),
   ],
   controllers: [AppController],
