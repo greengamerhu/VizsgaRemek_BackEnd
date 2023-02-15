@@ -11,13 +11,14 @@ import { User_address } from './User_adress.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      username: 'root',
-      password: '',
-      database: 'vizsgarem_db',
+      host: process.env.DB_HOST || 'localhost',
+      port: parseInt(process.env.DB_PORT) || 3306,
+      username: process.env.DB_USERNAME || 'root',
+      password: process.env.DB_PASSWORD || '',
+      database: process.env.DB_DATABASE || 'database',
       entities: [
-        /* List of entities here */
         User, User_address, Menu, Orders
+        /* List of entities here */
       ],
       synchronize: true,
     }),

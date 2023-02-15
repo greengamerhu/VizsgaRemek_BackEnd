@@ -1,3 +1,6 @@
+# config files
+.env
+
 # compiled output
 /dist
 /node_modules
@@ -32,4 +35,8 @@ lerna-debug.log*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
+<<<<<<< HEAD
 !.vscode/extensions.json
+=======
+!.vscode/extensions.json
+>>>>>>> d13077ca61a895ed987539feceba54c478521ea4
