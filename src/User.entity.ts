@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export default class User {
+export default class Users {
     @PrimaryGeneratedColumn() 
     id : number;
     @Column()
@@ -13,7 +13,6 @@ export default class User {
     @Column()
     phoneNumber : string;
 
-    @Column()
-    shoppingCart_id : string;
+    
 
 }

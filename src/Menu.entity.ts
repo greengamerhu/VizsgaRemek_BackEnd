@@ -9,5 +9,7 @@ export class Menu {
     @Column()
     food_description : string;
     @Column()
+    food_category : string;
+    @Column()
     food_price : number;
 }
