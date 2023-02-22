@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import User from "./User.entity";
 
 
@@ -6,7 +6,7 @@ import User from "./User.entity";
 export class User_address {
     @PrimaryGeneratedColumn() 
     id : number;
-    @ManyToOne(type => User , user => user.id) user: User; 
+    @ManyToMany(type => User , user => user.id) user: User; 
     @Column()
     adress : string
     @Column()

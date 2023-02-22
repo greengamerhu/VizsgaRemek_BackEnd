@@ -43,7 +43,6 @@ export class AppController {
     user.fullName = registerDto.fullName
     user.email = registerDto.email
     user.password = await bcrypt.hash(registerDto.password, 15)
-    user.phoneNumber = registerDto.phoneNumber
     
     userRepo.save(user)
 
