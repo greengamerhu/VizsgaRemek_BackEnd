@@ -10,9 +10,7 @@ export default class Users {
     email : string;
     @Column()
     password : string;
-    @Column()
-    phoneNumber : string;
-
+  
     
 
 }
