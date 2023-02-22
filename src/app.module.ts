@@ -2,10 +2,15 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Menu } from './Menu.entity';
-import { Orders } from './orders.entity';
-import User from './User.entity';
-import { User_address } from './User_adress.entity';
+
+
+import { UsersModule } from './users/users.module';
+import { UserAdressModule } from './user_adress/user_adress.module';
+import { UserAddress } from './user_adress/entities/user_adress.entity';
+import { ShoppingSessionModule } from './shopping_session/shopping_session.module';
+import { MenuModule } from './menu/menu.module';
+import { CartItemModule } from './cart_item/cart_item.module';
+import User from './users/entities/user.entity';
 
 @Module({
   imports: [
@@ -17,11 +22,16 @@ import { User_address } from './User_adress.entity';
       password: process.env.DB_PASSWORD || '',
       database: process.env.DB_DATABASE || 'database',
       entities: [
-        User, User_address, Menu, Orders
+        User, UserAddress
         /* List of entities here */
       ],
       synchronize: true,
     }),
+    UsersModule,
+    UserAdressModule,
+    ShoppingSessionModule,
+    MenuModule,
+    CartItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],
