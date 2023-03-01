@@ -11,6 +11,7 @@ import { ShoppingSessionModule } from './shopping_session/shopping_session.modul
 import { MenuModule } from './menu/menu.module';
 import { CartItemModule } from './cart_item/cart_item.module';
 import User from './users/entities/user.entity';
+import { Menu } from './menu/entities/menu.entity';
 
 @Module({
   imports: [
@@ -22,7 +23,7 @@ import User from './users/entities/user.entity';
       password: process.env.DB_PASSWORD || '',
       database: process.env.DB_DATABASE || 'database',
       entities: [
-        User, UserAddress
+        User, UserAddress, Menu
         /* List of entities here */
       ],
       synchronize: true,
