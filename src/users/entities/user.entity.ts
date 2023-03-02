@@ -14,6 +14,4 @@ export default class User {
     @OneToMany(() => UserAddress, address => address.user)
     addresses: UserAddress[];
   
-    
-
 }
