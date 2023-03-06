@@ -29,7 +29,7 @@ export class UsersService {
     user.fullName = registerDto.fullName
     user.email = registerDto.email
     user.password = await bcrypt.hash(registerDto.password, 15)
-    
+    console.log(user)
     userRepo.save(user)
   }
 
@@ -49,5 +49,9 @@ export class UsersService {
 
   remove(id: number) {
     return `This action removes a #${id} user`;
+  }
+
+  async getProfile(req) {
+    return req.user.UserAddress
   }
 }

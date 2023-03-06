@@ -12,6 +12,9 @@ import { MenuModule } from './menu/menu.module';
 import { CartItemModule } from './cart_item/cart_item.module';
 import User from './users/entities/user.entity';
 import { Menu } from './menu/entities/menu.entity';
+import { AuthModule } from './auth/auth.module';
+import Token from './auth/token.entity';
+import { PassportModule } from '@nestjs/passport/dist/passport.module';
 
 @Module({
   imports: [
@@ -23,7 +26,7 @@ import { Menu } from './menu/entities/menu.entity';
       password: process.env.DB_PASSWORD || '',
       database: process.env.DB_DATABASE || 'database',
       entities: [
-        User, UserAddress, Menu
+        User, UserAddress, Menu, Token
         /* List of entities here */
       ],
       synchronize: true,
@@ -33,6 +36,8 @@ import { Menu } from './menu/entities/menu.entity';
     ShoppingSessionModule,
     MenuModule,
     CartItemModule,
+    AuthModule,
+    PassportModule
   ],
   controllers: [AppController],
   providers: [AppService],
