@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Menu } from 'src/menu/entities/menu.entity'
 import { DataSource } from 'typeorm';
-import { CreateMenuDto } from './dto/create-menu.dto';
+import  CreateMenuDto  from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
 
 @Injectable()
@@ -12,6 +12,7 @@ export class MenuService {
 
   async create(createMenuDto: CreateMenuDto) {
     const menuItem = Object.assign(new Menu(), createMenuDto)
+    console.log(menuItem)
     await this.dataSource.getRepository(Menu).save(menuItem)
   }
 

@@ -1,4 +1,4 @@
-export class CreateMenuDto {
+export default class CreateMenuDto {
     food_id : number;
     food_name : string;
     food_description : string;
