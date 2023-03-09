@@ -52,6 +52,6 @@ export class UsersService {
   }
 
   async getProfile(req) {
-    return req.user.UserAddress
+    return req.user
   }
 }

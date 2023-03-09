@@ -1,16 +1,30 @@
 import { Injectable } from '@nestjs/common';
+import { DataSource } from 'typeorm';
 import { CreateUserAdressDto } from './dto/create-user_adress.dto';
 import { UpdateUserAdressDto } from './dto/update-user_adress.dto';
+import { UserAddress } from './entities/user_adress.entity';
 
 @Injectable()
 export class UserAdressService {
-  create(createUserAdressDto: CreateUserAdressDto) {
-    
-    return 'This action adds a new userAdress';
+  constructor(private dataSource: DataSource) { }
+  async create(createUserAdressDto: CreateUserAdressDto, user) {
+    //TODO:  validációt megírni
+    const userAdressRepo = this.dataSource.getRepository(UserAddress)
+    const newAdress = new UserAddress()
+    newAdress.id = 0
+    newAdress.postalCode = createUserAdressDto.postalCode
+    newAdress.city = createUserAdressDto.city
+    newAdress.adress = createUserAdressDto.adress
+    newAdress.user = user
+
+    await userAdressRepo.save(newAdress)
+
   }
 
-  findAll() {
-    return `This action returns all userAdress`;
+  async findAll(user) {
+    const userAdressRepo = this.dataSource.getRepository(UserAddress)
+    
+    return await userAdressRepo.findBy({user : user})
   }
 
   findOne(id: number) {

@@ -28,7 +28,7 @@ export class MenuService {
     return `This action updates a #${id} menu`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} menu`;
+  async remove(id: number) {
+    await this.dataSource.getRepository(Menu).delete(id);
   }
 }
