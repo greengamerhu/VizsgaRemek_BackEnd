@@ -1,0 +1,88 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "VizsgaRemek_Végpontok",
+    "dateExported": "2023-03-09T10:48:09.177Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "574ae061-61a0-4996-ad5e-2a47ac18543c",
+            "colId": "95eef06c-0644-4407-8907-55ee671741e8",
+            "containerId": "",
+            "name": "Register request",
+            "url": "http://localhost:3000/user/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-03-08T07:53:36.078Z",
+            "modified": "2023-03-08T07:55:36.326Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\" : \"admin@example.com\",\n  \"fullName\" : \"Admin Boss\",\n  \"password\" : \"123321\",\n  \"repassword\": \"123321\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c23e53af-3e45-48e0-acd0-1c929435700e",
+            "colId": "95eef06c-0644-4407-8907-55ee671741e8",
+            "containerId": "",
+            "name": "Login",
+            "url": "http://localhost:3000/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-03-08T07:53:55.896Z",
+            "modified": "2023-03-08T07:55:48.797Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\" : \"admin@example.com\",\n  \"password\" : \"123321\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "082d1cc0-08f6-4085-86bc-97ed0671eed5",
+            "colId": "95eef06c-0644-4407-8907-55ee671741e8",
+            "containerId": "",
+            "name": "UserAdressAdd",
+            "url": "http://localhost:3000/user-adress",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-03-08T07:54:14.360Z",
+            "modified": "2023-03-08T08:36:10.108Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"adress\" : \"Kés kapás 9\",\n    \"city\" : \"Csepel\",\n    \"postalCode\" : \"4444\",\n    \"mobileNumber\" : \"0000000000\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "a0565e94fb8fbe8a4343c23da6616414f35add2139d11da8fcea65943484ce7e "
+            },
+            "tests": []
+        },
+        {
+            "_id": "d1d119cb-c552-4d47-9226-cf471b85d9f9",
+            "colId": "95eef06c-0644-4407-8907-55ee671741e8",
+            "containerId": "",
+            "name": "AdressByUser",
+            "url": "http://localhost:3000/user-adress/getAllAdress",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-03-08T08:23:40.471Z",
+            "modified": "2023-03-08T08:35:07.121Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "a0565e94fb8fbe8a4343c23da6616414f35add2139d11da8fcea65943484ce7e "
+            },
+            "tests": []
+        }
+    ]
+}
