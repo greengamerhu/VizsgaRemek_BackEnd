@@ -15,7 +15,7 @@ export class UserAdressController {
   }
 
   @UseGuards(AuthGuard('bearer'))
-  @Get('getAllAdress')
+  @Get()
   findAllByUser(@Request() req) {
     return this.userAdressService.findAll(req.user);
   }

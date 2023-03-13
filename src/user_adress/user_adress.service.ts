@@ -15,6 +15,7 @@ export class UserAdressService {
     newAdress.postalCode = createUserAdressDto.postalCode
     newAdress.city = createUserAdressDto.city
     newAdress.adress = createUserAdressDto.adress
+    newAdress.mobileNumber = createUserAdressDto.mobileNumber
     newAdress.user = user
 
     await userAdressRepo.save(newAdress)
@@ -24,7 +25,7 @@ export class UserAdressService {
   async findAll(user) {
     const userAdressRepo = this.dataSource.getRepository(UserAddress)
     
-    return await userAdressRepo.findBy({user : user})
+    return {address: await userAdressRepo.findBy({user : user})}
   }
 
   findOne(id: number) {

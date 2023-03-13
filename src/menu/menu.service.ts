@@ -17,7 +17,7 @@ export class MenuService {
   }
 
   async findAll() {
-   return await this.dataSource.getRepository(Menu).find();
+   return {menu : await this.dataSource.getRepository(Menu).find()};
   }
 
   findOne(id: number) {
