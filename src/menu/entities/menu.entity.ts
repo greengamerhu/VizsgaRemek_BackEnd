@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Cart } from "src/cart/entities/cart.entity";
+import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Menu {
@@ -12,4 +13,8 @@ export class Menu {
     food_category : string;
     @Column()
     food_price : number;
+
+    @OneToMany(() => Cart, cart => cart.id)
+    @JoinColumn()
+    cart: Cart[]
 }

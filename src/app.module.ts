@@ -7,14 +7,14 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { UserAdressModule } from './user_adress/user_adress.module';
 import { UserAddress } from './user_adress/entities/user_adress.entity';
-import { ShoppingSessionModule } from './shopping_session/shopping_session.module';
 import { MenuModule } from './menu/menu.module';
-import { CartItemModule } from './cart_item/cart_item.module';
 import User from './users/entities/user.entity';
 import { Menu } from './menu/entities/menu.entity';
 import { AuthModule } from './auth/auth.module';
 import Token from './auth/token.entity';
 import { PassportModule } from '@nestjs/passport/dist/passport.module';
+import { CartModule } from './cart/cart.module';
+import { Cart } from './cart/entities/cart.entity';
 
 @Module({
   imports: [
@@ -26,18 +26,17 @@ import { PassportModule } from '@nestjs/passport/dist/passport.module';
       password: process.env.DB_PASSWORD || '',
       database: process.env.DB_DATABASE || 'database',
       entities: [
-        User, UserAddress, Menu, Token
+        User, UserAddress, Menu, Token, Cart
         /* List of entities here */
       ],
       synchronize: true,
     }),
     UsersModule,
     UserAdressModule,
-    ShoppingSessionModule,
     MenuModule,
-    CartItemModule,
     AuthModule,
-    PassportModule
+    PassportModule,
+    CartModule
   ],
   controllers: [AppController],
   providers: [AppService],
