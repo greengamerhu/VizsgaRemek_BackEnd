@@ -15,9 +15,11 @@ export class Cart {
     @ManyToOne(type => User, user => user.id)
     @JoinColumn()
     user: User
+    
+
     @ManyToOne(() => Menu, menu => menu.food_id)
     @JoinColumn()
-    menu : Menu
+    menuItem : Menu
     // @ManyToOne(type => Menu, order => order.id)
     // @JoinColumn()
     // item: Menu
