@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import User from 'src/users/entities/user.entity';
 import { DataSource } from 'typeorm';
 import { CreateCartDto } from './dto/create-cart.dto';
@@ -14,13 +14,15 @@ export class CartService {
   constructor(private dataSource: DataSource) {}
   create(createCartDto: CreateCartDto, user : User) {
     const cartRepo = this.dataSource.getRepository(Cart);
-
+    console.log(user)
     const newCartItem = new Cart()
-
+    // if(createCartDto.menuitem != null) {
+    //   throw new BadRequestException()
+    // }
     newCartItem.menuItem = createCartDto.menuitem
 
-    console.log(newCartItem.menuItem) 
-    console.log(createCartDto.menuitem) 
+    // console.log(newCartItem.menuItem) 
+    // console.log(createCartDto.menuitem) 
     newCartItem.quantity = createCartDto.quantity 
     newCartItem.total = newCartItem.quantity * newCartItem.menuItem.food_price
     newCartItem.user = user;

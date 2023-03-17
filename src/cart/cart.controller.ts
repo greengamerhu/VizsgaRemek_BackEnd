@@ -18,8 +18,7 @@ export class CartController {
   getCartItems(@Request() req) {
     return this.cartService.getCartItems(req.user);
   }
-
-  @Get(':id')
+  @Get()
   findOne(@Param('id') id: string) {
     return this.cartService.findOne(+id);
   }

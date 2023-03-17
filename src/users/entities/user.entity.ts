@@ -15,7 +15,7 @@ export default class User {
     @OneToMany(() => UserAddress, address => address.user)
     addresses: UserAddress[];
 
-    @OneToMany(type => Cart, cart => cart.id)
+    @OneToMany(type => Cart, cart => cart)
     @JoinColumn()
     cart: Cart[]
 }

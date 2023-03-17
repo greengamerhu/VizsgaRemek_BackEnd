@@ -36,7 +36,9 @@ export class UserAdressService {
     return `This action updates a #${id} userAdress`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} userAdress`;
+  async remove(id: number) {
+    const userAdressRepo = this.dataSource.getRepository(UserAddress)
+     await userAdressRepo.delete(id)
+    
   }
 }

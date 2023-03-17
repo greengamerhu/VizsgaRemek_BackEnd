@@ -19,9 +19,10 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+  @UseGuards(AuthGuard('bearer'))
+  @Get('/profile')
+  findOne(@Request() req) {
+    return this.usersService.findOne(req.user);
   }
 
   @Patch(':id')
