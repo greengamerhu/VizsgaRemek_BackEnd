@@ -5,5 +5,5 @@ export class CreateCartDto {
     @IsNotEmpty()
     quantity: number
     @IsNotEmpty()
-    menuitem : Menu
+    menuItem : Menu
 }

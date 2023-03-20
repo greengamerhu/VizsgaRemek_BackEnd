@@ -5,7 +5,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "t
 @Entity()
 export class Cart {
     @PrimaryGeneratedColumn('uuid')
-    id: number
+    id: string
  
     @Column()
     total: number
