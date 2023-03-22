@@ -15,6 +15,8 @@ import Token from './auth/token.entity';
 import { PassportModule } from '@nestjs/passport/dist/passport.module';
 import { CartModule } from './cart/cart.module';
 import { Cart } from './cart/entities/cart.entity';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -31,6 +33,10 @@ import { Cart } from './cart/entities/cart.entity';
       ],
       synchronize: true,
     }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public')
+    }),
+    
     UsersModule,
     UserAdressModule,
     MenuModule,
