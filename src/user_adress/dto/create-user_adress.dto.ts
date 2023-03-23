@@ -1,15 +1,15 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString, Length } from "class-validator"
+import { IsIn, IsNotEmpty, IsNumber, IsOptional, IsPostalCode, IsString, Length, Max, Min } from "class-validator"
 
 export class CreateUserAdressDto {
     //TODO:  validációt megírni
     @IsNotEmpty()
     @IsString()
-    adress : string
+    address : string
     @IsNotEmpty()
-
+    @IsString()
     city : string
     @IsNotEmpty()
-    @Length(4, 4)
+    @IsPostalCode('HU',{message : "nem magyarországi irányítószámot adtál meg"})
     postalCode : string
     @IsOptional()
     mobileNumber : string

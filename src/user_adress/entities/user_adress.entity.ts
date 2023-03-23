@@ -7,7 +7,7 @@ export class UserAddress {
     @PrimaryGeneratedColumn() 
     id : number;
     @Column()
-    adress : string
+    address : string
     @Column()
     city : string
     @Column()

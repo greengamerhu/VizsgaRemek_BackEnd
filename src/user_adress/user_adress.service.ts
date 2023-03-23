@@ -14,7 +14,7 @@ export class UserAdressService {
     newAdress.id = 0
     newAdress.postalCode = createUserAdressDto.postalCode
     newAdress.city = createUserAdressDto.city
-    newAdress.adress = createUserAdressDto.adress
+    newAdress.address = createUserAdressDto.address
     newAdress.mobileNumber = createUserAdressDto.mobileNumber
     newAdress.user = user
 
