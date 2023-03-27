@@ -17,6 +17,8 @@ import { CartModule } from './cart/cart.module';
 import { Cart } from './cart/entities/cart.entity';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { OrderModule } from './order/order.module';
+import { Order } from './order/entities/order.entity';
 
 @Module({
   imports: [
@@ -28,7 +30,7 @@ import { join } from 'path';
       password: process.env.DB_PASSWORD || '',
       database: process.env.DB_DATABASE || 'database',
       entities: [
-        User, UserAddress, Menu, Token, Cart
+        User, UserAddress, Menu, Token, Cart, Order
         /* List of entities here */
       ],
       synchronize: true,
@@ -42,7 +44,8 @@ import { join } from 'path';
     MenuModule,
     AuthModule,
     PassportModule,
-    CartModule
+    CartModule,
+    OrderModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,4 +1,4 @@
-import { IsIn, IsNotEmpty, IsNumber, IsOptional, IsPostalCode, IsString, Length, Max, Min } from "class-validator"
+import {  IsNotEmpty,  IsOptional, IsPostalCode, IsString, } from "class-validator"
 
 export class CreateUserAdressDto {
     //TODO:  validációt megírni

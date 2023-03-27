@@ -35,7 +35,6 @@ export class CartService {
 
   async getCartItems(user : User) {
     const cartRepo = this.dataSource.getRepository(Cart);
-    const cartItems = await cartRepo.findBy({user} ) 
     let sumTotalQuerry  =  await cartRepo.createQueryBuilder('cart').select('SUM(total) as subTotal') 
     .where('userId = :userId', {userId : user.id}).getRawOne() as subTotal
     const sumTotal = sumTotalQuerry.subTotal;

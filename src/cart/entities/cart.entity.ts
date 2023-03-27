@@ -12,14 +12,15 @@ export class Cart {
  
     @Column()
     quantity: number
+    
     @ManyToOne(type => User, user => user.id)
     @JoinColumn()
     user: User
     
-
     @ManyToOne(() => Menu, menu => menu.food_id)
     @JoinColumn()
     menuItem : Menu
+
     // @ManyToOne(type => Menu, order => order.id)
     // @JoinColumn()
     // item: Menu
