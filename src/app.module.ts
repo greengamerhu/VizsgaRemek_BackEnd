@@ -19,6 +19,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { OrderModule } from './order/order.module';
 import { Order } from './order/entities/order.entity';
+import { OrderItems } from './order/entities/orderItems.entity';
 
 @Module({
   imports: [
@@ -30,7 +31,7 @@ import { Order } from './order/entities/order.entity';
       password: process.env.DB_PASSWORD || '',
       database: process.env.DB_DATABASE || 'database',
       entities: [
-        User, UserAddress, Menu, Token, Cart, Order
+        User, UserAddress, Menu, Token, Cart, Order,  OrderItems
         /* List of entities here */
       ],
       synchronize: true,

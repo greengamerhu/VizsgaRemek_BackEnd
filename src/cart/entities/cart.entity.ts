@@ -21,9 +21,6 @@ export class Cart {
     @JoinColumn()
     menuItem : Menu
 
-    // @ManyToOne(type => Menu, order => order.id)
-    // @JoinColumn()
-    // item: Menu
  
    
 }

@@ -19,7 +19,5 @@ export class Menu {
     @JoinColumn()
     cart: Cart[]
 
-    @OneToMany(() => Order, order => order.id)
-    @JoinColumn()
-    order : Order[]
+  
 }
