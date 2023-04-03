@@ -34,4 +34,10 @@ export class AuthController {
         const token = authHeader.split(' ')[1];
         this.authService.logoutUser(token)
     }    
+    @UseGuards(AuthGuard('bearer'))
+    @Post('logout')
+    async deleteUserTokenPost(@Headers('authorization') authHeader: string) {
+        const token = authHeader.split(' ')[1];
+        this.authService.logoutUser(token)
+    }    
 }
