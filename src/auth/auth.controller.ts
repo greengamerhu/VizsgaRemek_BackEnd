@@ -20,9 +20,8 @@ export class AuthController {
         if ( user == null) {
             throw new UnauthorizedException("Hibás email")
         }
-        if(await !bcrypt.compare(loginData.password, user.password)) {
+        if(!await bcrypt.compare(loginData.password, user.password)) {
             throw new UnauthorizedException("Hibás jelszo")
-            
         }
         return {
             token : await this.authService.generateTokenFor(user)
