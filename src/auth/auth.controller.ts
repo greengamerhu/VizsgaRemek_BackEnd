@@ -18,10 +18,10 @@ export class AuthController {
         const userRepo = this.dataSource.getRepository(User)
         const user = await userRepo.findOne({where : {email : loginData.email}});
         if ( user == null) {
-            throw new UnauthorizedException("Hibás email")
+            throw new UnauthorizedException(["Hibás email"])
         }
         if(!await bcrypt.compare(loginData.password, user.password)) {
-            throw new UnauthorizedException("Hibás jelszo")
+            throw new UnauthorizedException(["Hibás jelszó"])
         }
         return {
             token : await this.authService.generateTokenFor(user)

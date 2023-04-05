@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import { CreateUserAdressDto } from './dto/create-user_adress.dto';
 import { UpdateUserAdressDto } from './dto/update-user_adress.dto';
@@ -10,6 +10,11 @@ export class UserAdressService {
   async create(createUserAdressDto: CreateUserAdressDto, user) {
     //TODO:  validációt megírni
     const userAdressRepo = this.dataSource.getRepository(UserAddress)
+    const addresses = await userAdressRepo.findBy({user : user})
+    console.log(addresses.length)
+    if (addresses.length >=3 ) {
+      throw new BadRequestException(["a maximum felvehető címek száma 3"])
+    } 
     const newAdress = new UserAddress()
     newAdress.id = 0
     newAdress.postalCode = createUserAdressDto.postalCode
