@@ -3,6 +3,9 @@ import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import RegisterUserDto from './dto/create-user.dto';
 import { AuthGuard } from '@nestjs/passport/dist';
+import {  Roles } from 'src/roles/roles.decorator';
+import { Role } from 'src/roles/role.enum';
+import { RolesGuard } from 'src/roles/roles.guard';
 
 
 @Controller('user')
@@ -14,8 +17,11 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
-  @Get()
-  findAll() {
+  @Get('getall')
+  @UseGuards(AuthGuard('bearer'))
+  // @Roles(Role.Admin)
+  findAll(@Request() req) {
+    console.log(req.user.role)
     return this.usersService.findAll();
   }
 

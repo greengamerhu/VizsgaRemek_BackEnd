@@ -4,6 +4,7 @@ import RegisterUserDto from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
 import User from './entities/user.entity';
+import { Role } from 'src/roles/role.enum';
 
 
 @Injectable()
@@ -29,6 +30,7 @@ export class UsersService {
     user.fullName = registerDto.fullName
     user.email = registerDto.email
     user.password = await bcrypt.hash(registerDto.password, 15)
+    user.role = Role.User
     console.log(user)
     userRepo.save(user)
   }

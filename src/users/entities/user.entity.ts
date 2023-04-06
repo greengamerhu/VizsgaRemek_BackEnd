@@ -1,5 +1,6 @@
 import { Cart } from "src/cart/entities/cart.entity";
 import { Order } from "src/order/entities/order.entity";
+import { Role } from "src/roles/role.enum";
 import { UserAddress } from "src/user_adress/entities/user_adress.entity";
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -21,4 +22,7 @@ export default class User {
     @OneToMany(type => Cart, cart => cart)
     @JoinColumn()
     cart: Cart[]
+
+    @Column()
+    role: Role
 }

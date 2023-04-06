@@ -20,6 +20,8 @@ import { join } from 'path';
 import { OrderModule } from './order/order.module';
 import { Order } from './order/entities/order.entity';
 import { OrderItems } from './order/entities/orderItems.entity';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './roles/roles.guard';
 
 
 @Module({
@@ -50,6 +52,9 @@ import { OrderItems } from './order/entities/orderItems.entity';
     OrderModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,   {
+    provide: APP_GUARD,
+    useClass: RolesGuard,
+  }],
 })
 export class AppModule {}
