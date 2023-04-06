@@ -14,6 +14,8 @@ export class Menu {
     food_category : string;
     @Column()
     food_price : number;
+    @Column()
+    food_image : string
 
     @OneToMany(() => Cart, cart => cart.id)
     @JoinColumn()

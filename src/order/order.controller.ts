@@ -13,10 +13,10 @@ export class OrderController {
   create(@Body() createOrderDto: CreateOrderDto, @Request() req) {
     return this.orderService.create(createOrderDto, req.user);
   }
-
-  @Get()
-  findAll() {
-    return this.orderService.findAll();
+  @UseGuards(AuthGuard('bearer'))
+  @Get('/getOrders')
+  findAllOrders(@Request() req) {
+    return this.orderService.findAllOrders(req.user);
   }
 
   @Get(':id')

@@ -61,8 +61,11 @@ export class OrderService {
     await orderRepo.save(currentOrder)
   }
 
-  findAll() {
-    return `This action returns all order`;
+  findAllOrders(user : User) {
+    const orderRepo = this.dataSource.getRepository(Order)
+    const orderitems = this.dataSource.getRepository(OrderItems)
+    orderRepo.find({where :{user}})
+    return ``;
   }
 
   findOne(id: number) {
