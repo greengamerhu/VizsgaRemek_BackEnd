@@ -28,7 +28,7 @@ export class OrderService {
         throw new BadRequestException("vagy üres a kosarad vagy már van felattad rendelésed")
     }
     let order = new Order()
-    order.selectedAdress = createOrderDto.selectedAdress
+    order.selectedAddress = createOrderDto.selectedAddress
     order.status = "Feldolgozás alatt"
     order.user = user
     order.total = 0
@@ -61,11 +61,11 @@ export class OrderService {
     await orderRepo.save(currentOrder)
   }
 
-  findAllOrders(user : User) {
+  async findAllOrders(user : User) {
     const orderRepo = this.dataSource.getRepository(Order)
     const orderitems = this.dataSource.getRepository(OrderItems)
-    orderRepo.find({where :{user}})
-    return ``;
+    const orders = await orderRepo.find({where :{user}, relations : {orderItems : true, selectedAddress : true}})
+    return {orders : orders}; 
   }
 
   findOne(id: number) {

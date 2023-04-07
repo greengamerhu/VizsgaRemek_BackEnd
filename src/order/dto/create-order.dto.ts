@@ -5,5 +5,5 @@ import { IsNotEmpty } from "class-validator";
 
 export class CreateOrderDto {
     @IsNotEmpty()
-    selectedAdress : UserAddress
+    selectedAddress : UserAddress
 }

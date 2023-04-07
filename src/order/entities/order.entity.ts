@@ -13,7 +13,7 @@ export class Order {
     user : User
 
     @ManyToOne(type => UserAddress, UserAddress => UserAddress.id)
-    selectedAdress : UserAddress
+    selectedAddress : UserAddress
 
 
     @OneToMany(() => OrderItems, item => item.order)
