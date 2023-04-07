@@ -9,7 +9,7 @@ export default class TokenStrategy extends PassportStrategy(Strategy) {
     super();
    }
     async validate(token :string) {
-        const user =  this.authService.findUserByToken(token)
+        const user = await this.authService.findUserByToken(token)
         
         if (user == null) {
             throw new UnauthorizedException();

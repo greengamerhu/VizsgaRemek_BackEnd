@@ -32,7 +32,7 @@ export class UserAdressController {
 
   @UseGuards(AuthGuard('bearer'))
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userAdressService.remove(+id);
+  remove(@Param('id') id: string, @Request() req) {
+    return this.userAdressService.remove(+id, req.user);
   }
 }

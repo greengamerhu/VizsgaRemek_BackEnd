@@ -1,8 +1,10 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { DataSource } from 'typeorm';
+import { DataSource, Not } from 'typeorm';
 import { CreateUserAdressDto } from './dto/create-user_adress.dto';
 import { UpdateUserAdressDto } from './dto/update-user_adress.dto';
 import { UserAddress } from './entities/user_adress.entity';
+import { Order } from 'src/order/entities/order.entity';
+import User from 'src/users/entities/user.entity';
 
 @Injectable()
 export class UserAdressService {
@@ -41,9 +43,15 @@ export class UserAdressService {
     return `This action updates a #${id} userAdress`;
   }
 
-  async remove(id: number) {
+  async remove(id: number, user:User) {
+    const orderRepo = this.dataSource.getRepository(Order)
     const userAdressRepo = this.dataSource.getRepository(UserAddress)
-     await userAdressRepo.delete(id)
+    const Address = await userAdressRepo.findOne({where : {id}})
+    const currentOrder = await orderRepo.findOne({where : {status : Not("Kiszállítva"), user : user, selectedAddress : Address}, relations :{ user : true}})
+    if(currentOrder != null) {
+      throw new BadRequestException(["Nem törölhetsz olyan szállítási címet amelyik még egy aktív rendeléshez tartozik"])
+    }
+    await userAdressRepo.delete(id)
     
   }
 }

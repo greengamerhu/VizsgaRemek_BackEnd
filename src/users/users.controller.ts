@@ -18,8 +18,8 @@ export class UsersController {
   }
 
   @Get('getall')
-  @UseGuards(AuthGuard('bearer'))
-  // @Roles(Role.Admin)
+  @UseGuards(AuthGuard('bearer'), RolesGuard)
+  @Roles(Role.Admin)
   findAll(@Request() req) {
     console.log(req.user.role)
     return this.usersService.findAll();
