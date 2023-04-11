@@ -25,6 +25,9 @@ export class Order {
 
     @Column()
     total : number;
+    @Column()
+
+    orderDate: Date
     
 
 }

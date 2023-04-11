@@ -9,7 +9,7 @@ export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
   @UseGuards(AuthGuard('bearer'))
-  @Post()
+  @Post('/placeOrder')
   create(@Body() createOrderDto: CreateOrderDto, @Request() req) {
     return this.orderService.create(createOrderDto, req.user);
   }
