@@ -24,16 +24,17 @@ export class OrderService {
     const orderItemRepo = this.dataSource.getRepository(OrderItems)
     let currentOrder = await orderRepo.findOne({where : {status : Not("Kiszállítva"), user : user}, relations :{ user : true}} )
     let cartItems : Cart[]= await cartRepo.find({where :{user}, relations : {menuItem : true}})
-    console.log(createOrderDto.selectedAddress)
     if(createOrderDto.selectedAddress.id == undefined) {
-      throw new BadRequestException("Nem kéne hackelgetni am")
+      throw new BadRequestException("Nem kéne hackelgetni...")
     }
     let userHaveTheAddress = await addressRepo.findOneBy({user : user, 
       id : createOrderDto.selectedAddress.id, 
       address : createOrderDto.selectedAddress.address,
       city : createOrderDto.selectedAddress.city,
       postalCode : createOrderDto.selectedAddress.postalCode})
-    
+    if(userHaveTheAddress == null) {
+      throw new BadRequestException("A szállítási cím nem megfelő vagy már törölve lett")
+    }
     if(cartItems.length == 0 || currentOrder != null)  {
         throw new BadRequestException("vagy üres a kosarad vagy már van felattad rendelésed")
     }
@@ -68,13 +69,15 @@ export class OrderService {
     let sumTotalQuerry  =  await orderItemRepo.createQueryBuilder('order_items').select('SUM(total) as subTotal') 
     .where('orderId = :orderId ', {orderId : currentOrder.id}).getRawOne() as subTotal
     currentOrder.total =  parseInt(sumTotalQuerry.subTotal)
+    await cartRepo.delete({user})
     await orderRepo.save(currentOrder)
   }
 
   async findAllOrders(user : User) {
     const orderRepo = this.dataSource.getRepository(Order)
-    const orders = await orderRepo.find({where :{user}, relations : {orderItems : true, selectedAddress : true}});
-    return {orders : orders}; 
+    const Activeorder = await orderRepo.find({where :{user, status : Not("Kiszállítva")}, relations : {orderItems : true, selectedAddress : true}});
+    const orderHistory = await orderRepo.find({where :{user, status : "Kiszállítva"}, relations : {orderItems : true, selectedAddress : true}});
+    return {activeOrder : Activeorder, orderHistory : orderHistory}; 
   }
 
   findOne(id: number) {
