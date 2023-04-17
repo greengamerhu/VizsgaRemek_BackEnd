@@ -6,6 +6,7 @@ import { NestFactory, Reflector } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import { AppModule } from './app.module';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -14,6 +15,12 @@ async function bootstrap() {
      alongside with src. You can put them wherever you want, 
      just use the correct path if you use another folder.
   */
+     const config = new DocumentBuilder()
+     .setTitle('Food Order app')
+     .setDescription('The Food order API leírása')
+     .build();
+   const document = SwaggerModule.createDocument(app, config);
+   SwaggerModule.setup('docs', app, document);
 
   app.enableCors({
     origin: '*',

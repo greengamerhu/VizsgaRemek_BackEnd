@@ -34,8 +34,6 @@ export class OrderService {
       city : createOrderDto.selectedAddress.city,
       postalCode : createOrderDto.selectedAddress.postalCode})
     
-    console.log(userHaveTheAddress)
-    return;
     if(cartItems.length == 0 || currentOrder != null)  {
         throw new BadRequestException("vagy üres a kosarad vagy már van felattad rendelésed")
     }
@@ -64,7 +62,6 @@ export class OrderService {
       orderItem.quantity = element.quantity
       orderItem.total = element.total
       // console.log(element)
-
       orderitems.push(orderItem)
     });
     await orderItemRepo.insert(orderitems)
@@ -76,8 +73,7 @@ export class OrderService {
 
   async findAllOrders(user : User) {
     const orderRepo = this.dataSource.getRepository(Order)
-    const orderitems = this.dataSource.getRepository(OrderItems)
-    const orders = await orderRepo.find({where :{user}, relations : {orderItems : true, selectedAddress : true}})
+    const orders = await orderRepo.find({where :{user}, relations : {orderItems : true, selectedAddress : true}});
     return {orders : orders}; 
   }
 

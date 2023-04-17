@@ -17,7 +17,7 @@ export class Cart {
     @JoinColumn()
     user: User
     
-    @ManyToOne(() => Menu, menu => menu.food_id)
+    @ManyToOne(() => Menu, menu => menu.food_id, {onDelete : "CASCADE"})
     @JoinColumn()
     menuItem : Menu
 
