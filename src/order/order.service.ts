@@ -24,6 +24,9 @@ export class OrderService {
     const orderItemRepo = this.dataSource.getRepository(OrderItems)
     let currentOrder = await orderRepo.findOne({where : {status : Not("Kiszállítva"), user : user}, relations :{ user : true}} )
     let cartItems : Cart[]= await cartRepo.find({where :{user}, relations : {menuItem : true}})
+    /**
+     * Megállítja a hackertámadást
+     */
     if(createOrderDto.selectedAddress.id == undefined) {
       throw new BadRequestException("Nem kéne hackelgetni...")
     }

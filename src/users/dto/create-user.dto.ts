@@ -19,7 +19,7 @@ export default class RegisterUserDto {
     @ApiProperty({
         description : "A user teljes neve cíne, kell tartalmaznia a szóközt",
         type : 'string',
-        example : "teszt@example.com",
+        example : "Teszt Elek",
         required : true,
     })
     fullName: string;

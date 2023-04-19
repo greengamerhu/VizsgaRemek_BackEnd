@@ -15,9 +15,10 @@ export class UsersController {
   @Post('/register')
   @ApiOperation({ description: 'Létrehoz egy új usert' })
   @ApiParam({
-    "name" : "createUserDto",
+    name : "createUserDto",
     description : "Lásd a Dto szekciónál"
   })
+
   create(@Body() createUserDto: RegisterUserDto) {
     return this.usersService.create(createUserDto);
   }
@@ -41,16 +42,6 @@ export class UsersController {
     return this.usersService.findOne(req.user);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
-  }
-
-  @UseGuards(AuthGuard('bearer'))
-  @Get('/a/acc') 
-  getProfile(@Request() req) {
-    return this.usersService.getProfile(req)
-  }
 
 
 }

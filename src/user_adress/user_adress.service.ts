@@ -34,16 +34,17 @@ export class UserAdressService {
     return {address: await userAdressRepo.findBy({user : user})}
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} userAdress`;
-  }
 
 
 
-  async remove(id: number, user:User) {
+  async remove(id: number, user: User) {
     const orderRepo = this.dataSource.getRepository(Order)
     const userAdressRepo = this.dataSource.getRepository(UserAddress)
-    const Address = await userAdressRepo.findOne({where : {id}})
+    const Address = await userAdressRepo.findOne({where : {id}, relations : {user : true}})
+    if(Address.user.id != user.id) {
+      throw new BadRequestException(["A megadott  id nem található ezen az account-on"])
+
+    }
     const currentOrder = await orderRepo.findOne({where : {status : Not("Kiszállítva"), user : user, selectedAddress : Address}, relations :{ user : true}})
     if(currentOrder != null) {
       throw new BadRequestException(["Nem törölhetsz olyan szállítási címet amelyik még egy aktív rendeléshez tartozik"])

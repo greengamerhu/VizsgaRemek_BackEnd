@@ -12,7 +12,6 @@ export class MenuService {
 
   async create(createMenuDto: CreateMenuDto) {
     const menuItem = Object.assign(new Menu(), createMenuDto)
-    console.log(menuItem)
     await this.dataSource.getRepository(Menu).save(menuItem)
   }
 
@@ -20,9 +19,6 @@ export class MenuService {
    return {menu : await this.dataSource.getRepository(Menu).find()};
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} menu`;
-  }
 
   update(id: number, updateMenuDto: UpdateMenuDto) {
     return `This action updates a #${id} menu`;

@@ -41,19 +41,10 @@ export class UsersService {
   }
   
   findOne(user : User) {
-    let data  = {
-      id : user.id,
-      fullName : user.fullName,
-      email :  user.email,
-    }
-    return data
+    return user;
   }
 
 
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
-  }
 
   async getProfile(req) {
     return req.user
