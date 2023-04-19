@@ -12,7 +12,7 @@ export class Order {
     @ManyToOne(type => User, user => user.id)
     user : User
 
-    @ManyToOne(type => UserAddress, UserAddress => UserAddress.id)
+    @ManyToOne(type => UserAddress, UserAddress => UserAddress.id, {onDelete : "SET NULL"})
     selectedAddress : UserAddress
 
 

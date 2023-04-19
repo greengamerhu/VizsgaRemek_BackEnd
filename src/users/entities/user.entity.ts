@@ -8,6 +8,9 @@ import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn
 export default class User {
     @PrimaryGeneratedColumn() 
     id : number;
+    /**
+     * A felhasználónak a neve
+     */
     @Column()
     fullName : string;
     @Column()

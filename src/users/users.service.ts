@@ -1,7 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import RegisterUserDto from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
 import User from './entities/user.entity';
 import { Role } from 'src/roles/role.enum';
@@ -50,9 +49,7 @@ export class UsersService {
     return data
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
+
 
   remove(id: number) {
     return `This action removes a #${id} user`;

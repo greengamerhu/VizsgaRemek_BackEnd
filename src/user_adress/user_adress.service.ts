@@ -1,7 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { DataSource, Not } from 'typeorm';
 import { CreateUserAdressDto } from './dto/create-user_adress.dto';
-import { UpdateUserAdressDto } from './dto/update-user_adress.dto';
 import { UserAddress } from './entities/user_adress.entity';
 import { Order } from 'src/order/entities/order.entity';
 import User from 'src/users/entities/user.entity';
@@ -39,9 +38,7 @@ export class UserAdressService {
     return `This action returns a #${id} userAdress`;
   }
 
-  update(id: number, updateUserAdressDto: UpdateUserAdressDto) {
-    return `This action updates a #${id} userAdress`;
-  }
+
 
   async remove(id: number, user:User) {
     const orderRepo = this.dataSource.getRepository(Order)

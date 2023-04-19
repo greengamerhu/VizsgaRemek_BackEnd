@@ -41,7 +41,7 @@ export class OrderService {
     let order = new Order()
     order.selectedAddress = createOrderDto.selectedAddress
     order.status = "Feldolgozás alatt"
-    let date = moment().format('YYYY-MM-DD HH:mm:ss')
+    let date = moment().utc(true)
     order.orderDate = new Date(date);
     order.user = user
     order.total = 0
@@ -73,9 +73,9 @@ export class OrderService {
     await orderRepo.save(currentOrder)
   }
 
-  async findAllOrders(user : User) {
+  async findAllOrdersForUsers(user : User) {
     const orderRepo = this.dataSource.getRepository(Order)
-    const Activeorder = await orderRepo.find({where :{user, status : Not("Kiszállítva")}, relations : {orderItems : true, selectedAddress : true}});
+    const Activeorder = await orderRepo.findOne({where :{user, status : Not("Kiszállítva")}, relations : {orderItems : true, selectedAddress : true}});
     const orderHistory = await orderRepo.find({where :{user, status : "Kiszállítva"}, relations : {orderItems : true, selectedAddress : true}});
     return {activeOrder : Activeorder, orderHistory : orderHistory}; 
   }
