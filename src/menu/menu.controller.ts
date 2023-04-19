@@ -31,6 +31,8 @@ export class MenuController {
   }
 
 
+
+  @Patch(':id')
   @UseGuards(AuthGuard('bearer'), RolesGuard)
   @Roles(Role.Admin)
   @ApiOperation({ description: 'Étel Módosítása, admin jogosultsággal' })
@@ -42,12 +44,20 @@ export class MenuController {
     name : "updateMenuDto",
     description : "Az étel modósításához szükséges adatok"
   } )
-  @Patch(':id')
   update(@Param('id') id: string, @Body() updateMenuDto: UpdateMenuDto) {
     return this.menuService.update(+id, updateMenuDto);
   }
+  
+
 
   @Delete(':id')
+  @UseGuards(AuthGuard('bearer'), RolesGuard)
+  @Roles(Role.Admin)
+  @ApiOperation({ description: 'Étel törlése, admin jogosultsággal' })
+  @ApiParam({
+    name : "id", 
+    description : "Az étel id-ja" 
+  })
   remove(@Param('id') id: number) {
     return this.menuService.remove(+id);
   }

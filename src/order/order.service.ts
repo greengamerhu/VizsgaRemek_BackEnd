@@ -8,6 +8,7 @@ import { Order } from './entities/order.entity';
 import { OrderItems } from './entities/orderItems.entity';
 import { UserAddress } from 'src/user_adress/entities/user_adress.entity';
 const moment = require('moment');
+
 interface subTotal {
   subTotal : string
 }
@@ -16,7 +17,13 @@ interface subTotal {
 @Injectable()
 export class OrderService {
   constructor(private dataSource: DataSource) {}
-
+  /**
+   * @param createOrderDto  megrendelés adatai
+   * @param user a végpontott fetch-elő user adatai
+   * @throws BadRequestException("Nem kéne hackelgetni...")  ha a dto undifined
+   * @throws BadRequestException("A szállítási cím nem megfelő vagy már törölve lett") ha az adott id-n nem található szállítási cím
+   * @throws BadRequestException("vagy üres a kosarad vagy már van felattad rendelésed") ha a felhasználónak van már aktív rendelése vagy üres a kosara
+   */
   async create(createOrderDto: CreateOrderDto, user : User) {
     const cartRepo = this.dataSource.getRepository(Cart)
     const addressRepo = this.dataSource.getRepository(UserAddress)
@@ -24,9 +31,6 @@ export class OrderService {
     const orderItemRepo = this.dataSource.getRepository(OrderItems)
     let currentOrder = await orderRepo.findOne({where : {status : Not("Kiszállítva"), user : user}, relations :{ user : true}} )
     let cartItems : Cart[]= await cartRepo.find({where :{user}, relations : {menuItem : true}})
-    /**
-     * Megállítja a hackertámadást
-     */
     if(createOrderDto.selectedAddress.id == undefined) {
       throw new BadRequestException("Nem kéne hackelgetni...")
     }

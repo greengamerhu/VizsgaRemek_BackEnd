@@ -21,7 +21,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">OrderService</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/36d4571/src/order/order.service.ts#L17">src/order/order.service.ts:17</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/0e65db8/src/order/order.service.ts#L18">src/order/order.service.ts:18</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -57,14 +57,14 @@
 <h5><span class="tsd-kind-parameter">dataSource</span>: <span class="tsd-signature-type ">DataSource</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <a href="order_order_service.OrderService.html" class="tsd-signature-type tsd-kind-class">OrderService</a></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/36d4571/src/order/order.service.ts#L18">src/order/order.service.ts:18</a></li></ul></aside></li></ul></section></section>
+<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/0e65db8/src/order/order.service.ts#L19">src/order/order.service.ts:19</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="dataSource" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>data<wbr/>Source</span><a href="#dataSource" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">data<wbr/>Source</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type ">DataSource</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/36d4571/src/order/order.service.ts#L18">src/order/order.service.ts:18</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/0e65db8/src/order/order.service.ts#L19">src/order/order.service.ts:19</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member"><a id="create" class="tsd-anchor"></a>
@@ -72,16 +72,27 @@
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="create.create-1"><span class="tsd-kind-call-signature">create</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">createOrderDto</span>, <span class="tsd-kind-parameter">user</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#create.create-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography">
+<h3>Throws</h3><p>BadRequestException(&quot;Nem kéne hackelgetni...&quot;)  ha a</p>
+
+<h3>Throws</h3><p>BadRequestException(&quot;A szállítási cím nem megfelő vagy már törölve lett&quot;) ha az adott id-n nem található</p>
+
+<h3>Throws</h3><p>BadRequestException(&quot;vagy üres a kosarad vagy már van felattad rendelésed&quot;) ha a felhasználónak van már aktív rendelése vagy üres a kosara</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">createOrderDto</span>: <a href="order_dto_create_order_dto.CreateOrderDto.html" class="tsd-signature-type tsd-kind-class">CreateOrderDto</a></h5></li>
+<h5><span class="tsd-kind-parameter">createOrderDto</span>: <a href="order_dto_create_order_dto.CreateOrderDto.html" class="tsd-signature-type tsd-kind-class">CreateOrderDto</a></h5>
+<div class="tsd-comment tsd-typography"><p>megrendelés adatai</p>
+</div></li>
 <li>
-<h5><span class="tsd-kind-parameter">user</span>: <a href="users_entities_user_entity.default.html" class="tsd-signature-type tsd-kind-class">default</a></h5></li></ul></div>
+<h5><span class="tsd-kind-parameter">user</span>: <a href="users_entities_user_entity.default.html" class="tsd-signature-type tsd-kind-class">default</a></h5>
+<div class="tsd-comment tsd-typography"><p>a végpontott fetch-elő user adatai</p>
+</div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/36d4571/src/order/order.service.ts#L20">src/order/order.service.ts:20</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/0e65db8/src/order/order.service.ts#L27">src/order/order.service.ts:27</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="findAllOrdersForUsers" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>All<wbr/>Orders<wbr/>For<wbr/>Users</span><a href="#findAllOrdersForUsers" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -94,7 +105,7 @@
 <h5><span class="tsd-kind-parameter">user</span>: <a href="users_entities_user_entity.default.html" class="tsd-signature-type tsd-kind-class">default</a></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span><br/><span>    </span><span class="tsd-kind-property">activeOrder</span><span class="tsd-signature-symbol">: </span><a href="order_entities_order_entity.Order.html" class="tsd-signature-type tsd-kind-class">Order</a><span class="tsd-signature-symbol">; </span><br/><span>    </span><span class="tsd-kind-property">orderHistory</span><span class="tsd-signature-symbol">: </span><a href="order_entities_order_entity.Order.html" class="tsd-signature-type tsd-kind-class">Order</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/36d4571/src/order/order.service.ts#L79">src/order/order.service.ts:79</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/0e65db8/src/order/order.service.ts#L83">src/order/order.service.ts:83</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="findOne" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>One</span><a href="#findOne" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -107,7 +118,7 @@
 <h5><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/36d4571/src/order/order.service.ts#L86">src/order/order.service.ts:86</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/0e65db8/src/order/order.service.ts#L90">src/order/order.service.ts:90</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="remove" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>remove</span><a href="#remove" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -120,7 +131,7 @@
 <h5><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/36d4571/src/order/order.service.ts#L94">src/order/order.service.ts:94</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/0e65db8/src/order/order.service.ts#L98">src/order/order.service.ts:98</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="update" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>update</span><a href="#update" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -135,7 +146,7 @@
 <h5><span class="tsd-kind-parameter">updateOrderDto</span>: <a href="order_dto_update_order_dto.UpdateOrderDto.html" class="tsd-signature-type tsd-kind-class">UpdateOrderDto</a></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/36d4571/src/order/order.service.ts#L90">src/order/order.service.ts:90</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/0e65db8/src/order/order.service.ts#L94">src/order/order.service.ts:94</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

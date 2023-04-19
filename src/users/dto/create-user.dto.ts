@@ -8,8 +8,7 @@ export default class RegisterUserDto {
         description : "A user email cíne",
         type : 'string',
         example : "teszt@example.com", 
-        required : true
-             
+        required : true     
 
     })
     email: string;
