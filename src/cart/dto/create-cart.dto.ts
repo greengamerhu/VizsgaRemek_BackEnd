@@ -16,7 +16,7 @@ export class CreateCartDto {
     @ApiProperty({
       description : "A kosárba helyezendő étel",
       type : 'Menu',
-    example : {/**TODO meg irni a menuitemet */}, 
+    example : {/**TODO meg irni a menuitemet t*/}, 
       required : true     
   })
     menuItem : Menu
