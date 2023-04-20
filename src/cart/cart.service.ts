@@ -15,6 +15,11 @@ export class CartService {
   constructor(private dataSource: DataSource) {}
   async create(createCartDto: CreateCartDto, user : User) {
     const cartRepo = this.dataSource.getRepository(Cart);
+    const menuRepo = this.dataSource.getRepository(Menu)
+    const MenuItemExist =  await menuRepo.findOne({where: { food_id : createCartDto.menuItem.food_id}});
+    if(MenuItemExist == null) {
+      throw new BadRequestException("az étel nem található")
+    }
     const AlreadyInTheCart = await cartRepo.findOne({where: {user : user, menuItem : createCartDto.menuItem}, relations : {user : true, menuItem : true}});
     if(AlreadyInTheCart) {
       console.log(AlreadyInTheCart.quantity) 
@@ -52,13 +57,15 @@ export class CartService {
     const cartItemToUpdate = await cartRepo.findOne({where: {user : user, menuItem : updateCartDto.menuItem}, relations : {user : true, menuItem : true}})
     cartItemToUpdate.quantity = updateCartDto.quantity
     cartItemToUpdate.total = updateCartDto.quantity * updateCartDto.menuItem.food_price
-    console.log(cartItemToUpdate)
     cartRepo.save(cartItemToUpdate)
   }
 
-  async remove(id: string) {
+  async remove(id: string, user : User) {
     const cartRepo = this.dataSource.getRepository(Cart)
-    console.log(id)
+    const cartItemExist = await cartRepo.findOne({where : {id, user}, relations : {user : true}})
+    if(cartItemExist == null) {
+      throw new BadRequestException("Az étel nincs a kosaradban")
+    }
     await cartRepo.delete({id : id});
   }
 }

@@ -37,8 +37,8 @@ export class MenuController {
   @Roles(Role.Admin)
   @ApiOperation({ description: 'Étel Módosítása, admin jogosultsággal' })
   @ApiParam({
-    name : "updateMenuDto", 
-    description : "Az étel modósításához szükséges adatok"
+    name : "id", 
+    description : "Az étel id-ja hogy lehessen módosítani"
   } )
   @ApiParam({
     name : "updateMenuDto",
