@@ -1,4 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
+import { ApiProperty } from '@nestjs/swagger';
 import { CreateCartDto } from './create-cart.dto';
 
-export class UpdateCartDto extends PartialType(CreateCartDto) {}
+export class UpdateCartDto extends PartialType(CreateCartDto) {
+}
