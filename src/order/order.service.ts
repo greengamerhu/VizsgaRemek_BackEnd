@@ -87,15 +87,18 @@ export class OrderService {
     return {activeOrder : Activeorder, orderHistory : orderHistory}; 
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} order`;
+  async findAllForAdmins() {
+    const orderRepo = this.dataSource.getRepository(Order)
+    return await orderRepo.find({where : {status : Not("Kiszállítva")}});
   }
 
-  update(id: number, updateOrderDto: UpdateOrderDto) {
-    return `This action updates a #${id} order`;
+  async update(id: string, updateOrderDto: UpdateOrderDto) {
+    const orderRepo = this.dataSource.getRepository(Order)
+    const orderToUpdate = await orderRepo.findOne({where : {id : id}})
+    orderToUpdate.status = updateOrderDto.status
+    await orderRepo.save(orderToUpdate)
+      
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} order`;
-  }
+
 }
