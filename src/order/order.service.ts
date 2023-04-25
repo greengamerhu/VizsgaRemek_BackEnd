@@ -89,12 +89,12 @@ export class OrderService {
 
   async findAllForAdmins() {
     const orderRepo = this.dataSource.getRepository(Order)
-    return await orderRepo.find({where : {status : Not("Kiszállítva")}});
+    return await orderRepo.find({where : {status : Not("Kiszállítva")}, relations : {orderItems : true}});
   }
 
   async update(id: string, updateOrderDto: UpdateOrderDto) {
     const orderRepo = this.dataSource.getRepository(Order)
-    const orderToUpdate = await orderRepo.findOne({where : {id : id}})
+    const orderToUpdate = await orderRepo.findOne({where :  {id}})
     orderToUpdate.status = updateOrderDto.status
     await orderRepo.save(orderToUpdate)
       

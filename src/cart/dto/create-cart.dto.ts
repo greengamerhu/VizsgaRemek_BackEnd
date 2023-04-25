@@ -14,7 +14,7 @@ export class CreateCartDto {
     @IsNotEmpty()
     @ApiProperty({
       description : "A kosárba helyezendő étel",
-      type : 'Menu',
+      type : Menu,
     example : {"food_id":1,"food_name":"Klasszikus burger","food_description":"Ha az egyszerűséget kedveli, akkor a klasszikus burgerünk a megfelelő választás! Friss, szaftos húspogácsa, cheddar sajt, friss zöldségek és ízletes szósz, mindez egy friss zsemlében tálalva.","food_category":"Burger","food_price":3900,"food_image":"zoldburger.png"}, 
       required : true     
   })
