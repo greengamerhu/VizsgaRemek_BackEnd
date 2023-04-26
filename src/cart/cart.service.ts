@@ -13,6 +13,12 @@ interface subTotal {
 @Injectable()
 export class CartService {
   constructor(private dataSource: DataSource) {}
+  /**
+   * kosárba rakás és ha többször nyom rá akkor hozzáad egyet a quantity-hez
+   * @param createCartDto A kosár létrehozásához szükséges adatok
+   * @param user 
+   * @throws BadRequestException("az étel nem található") ha esetleg sikerülne olyan id-t küldeni ami nincs is az étlapon
+   */
   async create(createCartDto: CreateCartDto, user : User) {
     const cartRepo = this.dataSource.getRepository(Cart);
     const menuRepo = this.dataSource.getRepository(Menu)
@@ -38,6 +44,11 @@ export class CartService {
 
   }
 
+  /**
+   * A usernek az aktuális kosarát adja vissza egy végösszeggel
+   * @param user 
+   * @returns kosárban lévő itemek és sumTotal végösszegnek
+   */
   async getCartItems(user : User) {
     const cartRepo = this.dataSource.getRepository(Cart);
     let sumTotalQuerry  =  await cartRepo.createQueryBuilder('cart').select('SUM(total) as subTotal') 
@@ -47,10 +58,12 @@ export class CartService {
     return {shoppingCart : await cartRepo.find({where :{user}, relations : {menuItem : true}}), sumTotal}
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} cart`;
-  }
 
+  /**
+   * A mennyiség növelése, csökkentése
+   * @param updateCartDto a kosár modosításához szükséges adatok
+   * @param user 
+   */
   async update(updateCartDto : UpdateCartDto, user : User) {
     console.log(user)
     const cartRepo = this.dataSource.getRepository(Cart)
@@ -59,7 +72,11 @@ export class CartService {
     cartItemToUpdate.total = updateCartDto.quantity * updateCartDto.menuItem.food_price
     cartRepo.save(cartItemToUpdate)
   }
-
+  /**
+   * A kosárban lévő ételek törlése
+   * @param id a törlése szánt étel 
+   * @param user 
+   */
   async remove(id: string, user : User) {
     const cartRepo = this.dataSource.getRepository(Cart)
     const cartItemExist = await cartRepo.findOne({where : {id, user}, relations : {user : true}})

@@ -1,7 +1,9 @@
 import { Cart } from "src/cart/entities/cart.entity";
 import { Order } from "src/order/entities/order.entity";
 import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-
+/**
+ * Az étlap adatáblája
+ */
 @Entity()
 export class Menu {
     @PrimaryGeneratedColumn() 

@@ -1,6 +1,9 @@
 import { Column, Entity, ManyToOne,  PrimaryGeneratedColumn } from "typeorm";
 import { Order } from "./order.entity";
 
+/**
+ * Különválasztva a rendelésektől, a megrendelt itemek listája (esetleges későbbi bővítés miatt)
+ */
 @Entity()
 export class OrderItems  {
     @PrimaryGeneratedColumn('uuid') 

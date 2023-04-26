@@ -4,6 +4,9 @@ import { Role } from "src/roles/role.enum";
 import { UserAddress } from "src/user_adress/entities/user_adress.entity";
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
+/**
+ * A felhasználóknak az adatáblája
+ */
 @Entity()
 export default class User {
     @PrimaryGeneratedColumn() 

@@ -1,7 +1,9 @@
 import User from "src/users/entities/user.entity";
 import { Column, Entity, JoinColumn,  ManyToOne,  PrimaryGeneratedColumn } from "typeorm";
 
-
+/**
+ * A felhasználó Szállítási címeinek adatáblája
+ */
 @Entity() 
 export class UserAddress {
     @PrimaryGeneratedColumn() 

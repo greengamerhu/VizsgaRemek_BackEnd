@@ -8,6 +8,11 @@ import { DataSource } from 'typeorm';
 @Injectable()
 export class AuthService {
     constructor(private dataSource : DataSource) {}
+    /**
+     * ha van már token az adatbázisban
+     * @param token 
+     * @returns a tokenhez tartozó usert
+     */
     async findUserByToken(token : string) {
         const tokenRepo = this.dataSource.getRepository(Token);
         const tokenObj =  await tokenRepo.findOne({where: {token}, 
@@ -18,6 +23,10 @@ export class AuthService {
         }
         return tokenObj.user;
     }
+    /**
+     * Token generálása bejelentkezéshez
+     * @param user 
+     */
     async generateTokenFor(user : User) {
         const randomBytes = crypto.randomBytes(32)
         const toString = randomBytes.toString("hex")
@@ -29,6 +38,10 @@ export class AuthService {
 
         return toString
     }
+    /**
+     * A kijelentkezés
+     * @param token A törlésre szánt token
+     */
     async logoutUser(token) {
         const tokenRepo = this.dataSource.getRepository(Token);
         const tokenObj =  await tokenRepo.findOne({where: {token}, 

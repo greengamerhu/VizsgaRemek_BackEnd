@@ -3,7 +3,9 @@ import User from "src/users/entities/user.entity";
 import { UserAddress } from "src/user_adress/entities/user_adress.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { OrderItems } from "./orderItems.entity";
-
+/**
+ * A rendelések adatáblája
+ */
 @Entity()
 export class Order {
     @PrimaryGeneratedColumn('uuid')

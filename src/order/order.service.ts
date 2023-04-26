@@ -18,6 +18,7 @@ interface subTotal {
 export class OrderService {
   constructor(private dataSource: DataSource) {}
   /**
+   * A rendelés leadása ami üriti a kosarat
    * @param createOrderDto  megrendelés adatai
    * @param user a végpontott fetch-elő user adatai
    * @throws BadRequestException("Nem kéne hackelgetni...")  ha a dto undifined
@@ -79,19 +80,30 @@ export class OrderService {
     await cartRepo.delete({user})
     await orderRepo.save(currentOrder)
   }
-
+  /**
+   * Az rendeléseket lekérdezéséhez szükséges
+   * @param user ezzel keresem meg az user-hez tartozó rendelésekkel
+   * @returns {activeOrder : Activeorder, orderHistory : orderHistory} json-t ad vissza ami tartalmazza az éppen aktív és nem aktív rendeléseket
+   */
   async findAllOrdersForUsers(user : User) {
     const orderRepo = this.dataSource.getRepository(Order)
     const Activeorder = await orderRepo.findOne({where :{user, status : Not("Kiszállítva")}, relations : {orderItems : true, selectedAddress : true}});
     const orderHistory = await orderRepo.find({where :{user, status : "Kiszállítva"}, relations : {orderItems : true, selectedAddress : true}});
     return {activeOrder : Activeorder, orderHistory : orderHistory}; 
   }
-
+  /**
+   * Az asztali alkalmazás számára listázza az összes rendelést 
+   * @returns az összes rendelés amelyik nincs a végső státuszában
+   */
   async findAllForAdmins() {
     const orderRepo = this.dataSource.getRepository(Order)
     return await orderRepo.find({where : {status : Not("Kiszállítva")}, relations : {orderItems : true}});
   }
-
+  /**
+   * a rendelés státuszának módosítása az asztali alkalmazás számára
+   * @param id a rendelés idja
+   * @param updateOrderDto a rendelés állapotának modosításához szükséges
+   */
   async update(id: string, updateOrderDto: UpdateOrderDto) {
     const orderRepo = this.dataSource.getRepository(Order)
     const orderToUpdate = await orderRepo.findOne({where :  {id}})
