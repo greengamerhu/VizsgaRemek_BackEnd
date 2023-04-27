@@ -1,9 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { IsNotEmpty } from "class-validator"
+import { IsNotEmpty, Min } from "class-validator"
 import { Menu } from "src/menu/entities/menu.entity"
 
 export class CreateCartDto {
     @IsNotEmpty()
+    @Min(1)
     @ApiProperty({
       description : "Az adott étel darabszáma",
       type : 'number',

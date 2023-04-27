@@ -38,7 +38,7 @@ export class OrderController {
     return this.orderService.findAllOrdersForUsers(req.user);
   }
 
-  @Get('/getOrdersFor')
+  @Get('/getOrdersForAdmins')
   @UseGuards(AuthGuard('bearer'), RolesGuard)
   @Roles(Role.Admin)
   @ApiOperation({ description: 'minden rendelés lekérdezése kivéve a "Kiszállítva" státuszu rendelés, kizárolag admin joggal' })

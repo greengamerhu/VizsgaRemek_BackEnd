@@ -1,0 +1,900 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "BiteMe_Burger_Végpont_tesztek",
+    "dateExported": "2023-04-27T22:30:49.471Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "69c298da-f040-4b6d-9e58-d82a2f598d06",
+            "name": "User_Modul(register)",
+            "containerId": "",
+            "created": "2023-04-27T19:48:25.838Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "f8d48b0a-e112-4198-acff-77592160fb6c",
+            "name": "Auth_modul",
+            "containerId": "",
+            "created": "2023-04-27T20:13:24.992Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "51461879-c011-46a7-9cd7-8e8d953e2eb2",
+            "name": "User_address_modul",
+            "containerId": "",
+            "created": "2023-04-27T20:25:15.049Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "98e896dd-aa9f-411c-a3b8-5f0288944152",
+            "name": "menu_modul",
+            "containerId": "",
+            "created": "2023-04-27T21:09:36.125Z",
+            "sortNum": 60000
+        },
+        {
+            "_id": "4b52ce29-30b2-47c1-9770-a20f033c2e08",
+            "name": "cart_modul",
+            "containerId": "",
+            "created": "2023-04-27T21:27:47.582Z",
+            "sortNum": 70000
+        },
+        {
+            "_id": "6a1a8c2a-d63c-40bb-a8f8-75f041604863",
+            "name": "order_modul",
+            "containerId": "",
+            "created": "2023-04-27T21:56:56.073Z",
+            "sortNum": 80000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "e0107946-87dc-4b03-95c7-c0414c1488ff",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "69c298da-f040-4b6d-9e58-d82a2f598d06",
+            "name": "/register(post) Normálisan lefut létrehozza a felhasználót",
+            "url": "http://localhost:3000/user/register",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-04-27T19:49:27.406Z",
+            "modified": "2023-04-27T19:56:55.271Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\" : \"teszt@example.com\",\n  \"fullName\" : \"Teszt Elek\",\n  \"password\" : \"123\",\n  \"repassword\" : \"123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b8355b70-7b56-4166-9d6a-56f98c3af35d",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "69c298da-f040-4b6d-9e58-d82a2f598d06",
+            "name": "/register(post) ha a json üres vagy nincsen",
+            "url": "http://localhost:3000/user/register",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-04-27T19:58:04.898Z",
+            "modified": "2023-04-27T19:59:23.535Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f70d0906-145e-4d46-a012-b9c3a9e717fa",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "f8d48b0a-e112-4198-acff-77592160fb6c",
+            "name": "/login (post) ha létezik a felhasználó és visszaad egy tokent",
+            "url": "http://localhost:3000/auth/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-04-27T20:13:45.688Z",
+            "modified": "2023-04-27T20:16:51.051Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\" : \"admin@example.com\",\n  \"password\" : \"123321\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c48f7ab6-8ccd-4c7f-8e4c-dd0f29dfafe3",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "69c298da-f040-4b6d-9e58-d82a2f598d06",
+            "name": "/register(post) ha az email formátum nem megfelelő",
+            "url": "http://localhost:3000/user/register",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-04-27T19:59:42.612Z",
+            "modified": "2023-04-27T20:01:51.659Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\" : \"tesztexamplecom\",\n  \"fullName\" : \"Teszt Elek\",\n  \"password\" : \"123\",\n  \"repassword\" : \"123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "fe39f7e7-77b0-46dd-af37-5fc232ca6427",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "f8d48b0a-e112-4198-acff-77592160fb6c",
+            "name": "/login (post) ha nem létezik a felhasználó",
+            "url": "http://localhost:3000/auth/login",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-04-27T20:17:28.294Z",
+            "modified": "2023-04-27T20:18:13.551Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\" : \"adminka@example.com\",\n  \"password\" : \"123321\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "710b3a8d-dbc8-4da2-aec5-4d6554819e06",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "69c298da-f040-4b6d-9e58-d82a2f598d06",
+            "name": "/register(post) ha a teljes név nem tartalmaz szóközt",
+            "url": "http://localhost:3000/user/register",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-04-27T20:02:41.214Z",
+            "modified": "2023-04-27T20:04:06.076Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\" : \"tesztex@ample.com\",\n  \"fullName\" : \"TesztElek\",\n  \"password\" : \"123\",\n  \"repassword\" : \"123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "8f855ae3-f918-4e1a-9bd8-07250b3155bb",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "f8d48b0a-e112-4198-acff-77592160fb6c",
+            "name": "/login (post) ha létezik a felhasználó de rossz a jelszó",
+            "url": "http://localhost:3000/auth/login",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-04-27T20:18:33.406Z",
+            "modified": "2023-04-27T20:19:10.786Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\" : \"admin@example.com\",\n  \"password\" : \"123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "129e8c22-9ccc-4b2b-8545-09100403236e",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "69c298da-f040-4b6d-9e58-d82a2f598d06",
+            "name": "/register(post) ha a jelszavak nem egyeznek",
+            "url": "http://localhost:3000/user/register",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-04-27T20:05:31.535Z",
+            "modified": "2023-04-27T20:06:07.978Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\" : \"tesztex@ample.com\",\n  \"fullName\" : \"Teszt Elek\",\n  \"password\" : \"123\",\n  \"repassword\" : \"1234\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a03ff026-c659-4e86-a7e6-4a0f445479df",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "f8d48b0a-e112-4198-acff-77592160fb6c",
+            "name": "/login (post) ha a json üres vagy nincsen",
+            "url": "http://localhost:3000/auth/login",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-04-27T20:19:44.740Z",
+            "modified": "2023-04-27T20:19:51.920Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5cb86139-c380-413e-bd4e-dfa26063fbaa",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "51461879-c011-46a7-9cd7-8e8d953e2eb2",
+            "name": "user-address (post) felvesz egy új címet ",
+            "url": "http://localhost:3000/user-address",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-04-27T20:27:49.593Z",
+            "modified": "2023-04-27T20:33:30.937Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"address\" : \"Valamilyen utca 11\",\n  \"city\" : \"Városka\",\n  \"postalCode\" : \"1111\",\n  \"mobileNumber\" : \"06441231232\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "aadbfe6a-38e0-4ee7-b446-66215787a44d",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "f8d48b0a-e112-4198-acff-77592160fb6c",
+            "name": "/logout (delete) ha a nem megy token a kérés mellé",
+            "url": "http://localhost:3000/auth/logout",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2023-04-27T20:20:40.517Z",
+            "modified": "2023-04-27T20:20:54.404Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d6091d08-059a-4eac-9543-00302937ccc8",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "51461879-c011-46a7-9cd7-8e8d953e2eb2",
+            "name": "user-address (post) ha a json üres vagy nincsen",
+            "url": "http://localhost:3000/user-address",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2023-04-27T20:37:16.430Z",
+            "modified": "2023-04-27T20:37:53.876Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "e1c895bd-6aa0-4687-a346-bc610e86371a",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "f8d48b0a-e112-4198-acff-77592160fb6c",
+            "name": "/logout (delete) ha megy a token a kérés mellé",
+            "url": "http://localhost:3000/auth/logout",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2023-04-27T20:22:24.492Z",
+            "modified": "2023-04-27T20:36:08.122Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": " (ide az  elöző lloginból érdemes berakni a tokent )"
+            },
+            "tests": []
+        },
+        {
+            "_id": "67a3d6d1-2cd7-438d-960f-b847babda6ab",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "51461879-c011-46a7-9cd7-8e8d953e2eb2",
+            "name": "user-address (post) ha a irányítószám hibás",
+            "url": "http://localhost:3000/user-address",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2023-04-27T20:38:03.812Z",
+            "modified": "2023-04-27T20:40:39.586Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"address\" : \"Valamilyen utca 11\",\n  \"city\" : \"Városka\",\n  \"postalCode\" : \"111\",\n  \"mobileNumber\" : \"06441231232\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "13082b29-3340-4ef1-8f08-29c3b1a5a1b6",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "98e896dd-aa9f-411c-a3b8-5f0288944152",
+            "name": "Menu( get)  lekérdezés",
+            "url": "http://localhost:3000/menu",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-04-27T21:09:56.741Z",
+            "modified": "2023-04-27T21:10:50.772Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "02be3a1e-5738-4178-a210-1d8143f02e45",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "51461879-c011-46a7-9cd7-8e8d953e2eb2",
+            "name": "user-address (post) ha nem ad meg telefonszámot",
+            "url": "http://localhost:3000/user-address",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2023-04-27T20:41:07.473Z",
+            "modified": "2023-04-27T20:43:13.298Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"address\" : \"Valamilyen utca 11\",\n  \"city\" : \"Városka\",\n  \"postalCode\" : \"1111\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "5eb8d68d-78c1-45df-b4d6-bedfa27d366c",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "98e896dd-aa9f-411c-a3b8-5f0288944152",
+            "name": "menu (post)  új étel hozzáadása a megfelelő jogosultságal",
+            "url": "http://localhost:3000/menu",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2023-04-27T21:11:51.573Z",
+            "modified": "2023-04-27T21:20:29.150Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"food_name\": \"teszt burger\",\n    \"food_description\": \"teszt birger leirás\",\n    \"food_category\": \"Burger\",\n    \"food_price\": 1000,\n    \"food_image\": \"teszt.png\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "163f088b929bd643e222e90cc5cb32aedf0036cf7ecd064bfb113d7f438265fd"
+            },
+            "tests": []
+        },
+        {
+            "_id": "ce407da3-f016-4d83-96d4-652325ac3d51",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "98e896dd-aa9f-411c-a3b8-5f0288944152",
+            "name": "menu (patch) étel módosítása  a megfelelő jogosultságal ",
+            "url": "http://localhost:3000/menu/14",
+            "method": "PATCH",
+            "sortNum": 102500,
+            "created": "2023-04-27T21:18:25.929Z",
+            "modified": "2023-04-27T21:20:57.702Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"food_name\": \"tesztesebb burger\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "163f088b929bd643e222e90cc5cb32aedf0036cf7ecd064bfb113d7f438265fd"
+            },
+            "tests": []
+        },
+        {
+            "_id": "341159be-a91d-428b-bb80-7f36a1f92650",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "98e896dd-aa9f-411c-a3b8-5f0288944152",
+            "name": "menu (delete) étel törlése a megfelelő jogosultságal ",
+            "url": "http://localhost:3000/menu/14",
+            "method": "DELETE",
+            "sortNum": 103750,
+            "created": "2023-04-27T21:23:34.141Z",
+            "modified": "2023-04-27T21:23:56.231Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "163f088b929bd643e222e90cc5cb32aedf0036cf7ecd064bfb113d7f438265fd"
+            },
+            "tests": []
+        },
+        {
+            "_id": "0945a679-6f1f-41df-ba59-e29e7991b026",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "98e896dd-aa9f-411c-a3b8-5f0288944152",
+            "name": "menu (post)  új étel hozzáadása a nem megfelelő jogosultságal",
+            "url": "http://localhost:3000/menu",
+            "method": "POST",
+            "sortNum": 105000,
+            "created": "2023-04-27T21:15:51.476Z",
+            "modified": "2023-04-27T21:18:10.984Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"food_name\": \"teszt burger\",\n    \"food_description\": \"teszt birger leirás\",\n    \"food_category\": \"Burger\",\n    \"food_price\": 1000,\n    \"food_image\": \"teszt.png\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "1cdb82a7-93d8-459d-a055-4566589388f3",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "51461879-c011-46a7-9cd7-8e8d953e2eb2",
+            "name": "user-address (post) ha a user több mint 3 címet probál felvenni",
+            "url": "http://localhost:3000/user-address",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2023-04-27T20:45:15.261Z",
+            "modified": "2023-04-27T20:45:15.261Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"address\" : \"Valamilyen utca 11\",\n  \"city\" : \"Városka\",\n  \"postalCode\" : \"1111\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "f2c7ed28-f8a4-44e7-8d31-e12085c53935",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "98e896dd-aa9f-411c-a3b8-5f0288944152",
+            "name": "menu (post)   étel  Módosítása a nem megfelelő jogosultságal",
+            "url": "http://localhost:3000/menu/14",
+            "method": "PATCH",
+            "sortNum": 115000,
+            "created": "2023-04-27T21:21:15.474Z",
+            "modified": "2023-04-27T21:26:37.602Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"food_name\": \"tesztesebb burger\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "dc4bba0e-88d2-4636-a911-d8f8497b8507",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "51461879-c011-46a7-9cd7-8e8d953e2eb2",
+            "name": "user-address (delete) ha user olyan címet probál törölni ami nem a sajátja vagy már törölte",
+            "url": "http://localhost:3000/user-address/38",
+            "method": "DELETE",
+            "sortNum": 120000,
+            "created": "2023-04-27T20:51:46.930Z",
+            "modified": "2023-04-27T20:53:53.700Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "37de3ab9-d0fa-41ff-a136-55354c6479da",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "4b52ce29-30b2-47c1-9770-a20f033c2e08",
+            "name": "cart (get) lekérdezés",
+            "url": "http://localhost:3000/cart",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2023-04-27T21:29:48.838Z",
+            "modified": "2023-04-27T21:30:42.280Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "abcc8196-0490-499d-bf30-abd3adf00819",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "98e896dd-aa9f-411c-a3b8-5f0288944152",
+            "name": "menu (delete)  étel  törlése a nem megfelelő jogosultságal",
+            "url": "http://localhost:3000/menu/14",
+            "method": "DELETE",
+            "sortNum": 125000,
+            "created": "2023-04-27T21:24:25.771Z",
+            "modified": "2023-04-27T21:25:08.774Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "5ce996f2-0021-4c4c-a0cf-d8a646b8287b",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "51461879-c011-46a7-9cd7-8e8d953e2eb2",
+            "name": "user-address (delete) ha user címet akar törölni",
+            "url": "http://localhost:3000/user-address/39",
+            "method": "DELETE",
+            "sortNum": 130000,
+            "created": "2023-04-27T20:54:11.603Z",
+            "modified": "2023-04-27T20:54:34.652Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "b5bfaca5-f4ff-44cd-b1d2-331091d1c367",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "4b52ce29-30b2-47c1-9770-a20f033c2e08",
+            "name": "cart (get) lekérdezés token nélkül",
+            "url": "http://localhost:3000/cart",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2023-04-27T21:30:59.198Z",
+            "modified": "2023-04-27T21:31:30.981Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3f91e27d-76ea-406b-b247-0ae0a3458376",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "6a1a8c2a-d63c-40bb-a8f8-75f041604863",
+            "name": "getOrder (get) lekérdezés",
+            "url": "http://localhost:3000/order/getOrders",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2023-04-27T21:57:19.681Z",
+            "modified": "2023-04-27T22:00:56.384Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "27777f55-fa21-4849-9442-7ff1dd9da687",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "51461879-c011-46a7-9cd7-8e8d953e2eb2",
+            "name": "user-address (delete) ha user olyan címet  akar törölni ami éppen aktív rendeléshez tartozik",
+            "url": "http://localhost:3000/user-address/33",
+            "method": "DELETE",
+            "sortNum": 135000,
+            "created": "2023-04-27T20:56:04.103Z",
+            "modified": "2023-04-27T20:56:22.534Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "753d1ebc-a364-4463-a34e-c987fbca6077",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "51461879-c011-46a7-9cd7-8e8d953e2eb2",
+            "name": "user-address (delete) ha user lekérdezi a címeket",
+            "url": "http://localhost:3000/user-address",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2023-04-27T20:55:03.985Z",
+            "modified": "2023-04-27T20:55:22.218Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "85265185-6774-48c2-9e72-66777f4efb25",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "4b52ce29-30b2-47c1-9770-a20f033c2e08",
+            "name": "cart (post)  Kosárba helyezés",
+            "url": "http://localhost:3000/cart",
+            "method": "POST",
+            "sortNum": 140000,
+            "created": "2023-04-27T21:32:04.355Z",
+            "modified": "2023-04-27T21:46:21.075Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"quantity\": 1,\n  \"menuItem\": {\n    \"food_id\": 7,\n    \"food_name\": \"Jalapeño Burger\",\n    \"food_description\": \"Próbálja ki a jalapeno burgerünk pikáns ízét, amelyben szaftos húspogácsa, friss zöldségek, cheddar sajt és friss jalapeno paprika találkoznak egy friss zsemlében.\",\n    \"food_category\": \"Burger\",\n    \"food_price\": 5100,\n    \"food_image\": \"Jalapeno.png\"\n  }\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "e7db3a11-dc00-49c3-af9e-2b9b8bcd06f4",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "6a1a8c2a-d63c-40bb-a8f8-75f041604863",
+            "name": "getOrdersForAdmins (get) összes rendelés lekérdezése megfelelő jogokkal",
+            "url": "http://localhost:3000/order/getOrdersForAdmins",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2023-04-27T22:01:01.234Z",
+            "modified": "2023-04-27T22:02:10.520Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "163f088b929bd643e222e90cc5cb32aedf0036cf7ecd064bfb113d7f438265fd"
+            },
+            "tests": []
+        },
+        {
+            "_id": "ca33ec55-9753-4f28-a44f-fb74620387d4",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "4b52ce29-30b2-47c1-9770-a20f033c2e08",
+            "name": "cart (patch) kosárban lévő elem módosítása ",
+            "url": "http://localhost:3000/cart",
+            "method": "PATCH",
+            "sortNum": 150000,
+            "created": "2023-04-27T21:43:30.785Z",
+            "modified": "2023-04-27T21:48:48.872Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"quantity\": 20,\n  \"menuItem\": {\n    \"food_id\": 7,\n    \"food_name\": \"Jalapeño Burger\",\n    \"food_description\": \"Próbálja ki a jalapeno burgerünk pikáns ízét, amelyben szaftos húspogácsa, friss zöldségek, cheddar sajt és friss jalapeno paprika találkoznak egy friss zsemlében.\",\n    \"food_category\": \"Burger\",\n    \"food_price\": 5100,\n    \"food_image\": \"Jalapeno.png\"\n  }\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "8426a06d-dd47-4baa-8530-04c0ce13080d",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "6a1a8c2a-d63c-40bb-a8f8-75f041604863",
+            "name": "getOrdersForAdmins (get) összes rendelés lekérdezése nem megfelelő jogokkal ",
+            "url": "http://localhost:3000/order/getOrdersForAdmins",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2023-04-27T22:03:04.123Z",
+            "modified": "2023-04-27T22:03:39.693Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "25894469-f937-41d7-9c29-a71bff09f850",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "4b52ce29-30b2-47c1-9770-a20f033c2e08",
+            "name": "cart (patch) kosárban lévő elem módosítása  ha a mennyiség kissebb mint 1",
+            "url": "http://localhost:3000/cart",
+            "method": "PATCH",
+            "sortNum": 160000,
+            "created": "2023-04-27T21:51:58.541Z",
+            "modified": "2023-04-27T21:53:08.029Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"quantity\": 0,\n  \"menuItem\": {\n    \"food_id\": 7,\n    \"food_name\": \"Jalapeño Burger\",\n    \"food_description\": \"Próbálja ki a jalapeno burgerünk pikáns ízét, amelyben szaftos húspogácsa, friss zöldségek, cheddar sajt és friss jalapeno paprika találkoznak egy friss zsemlében.\",\n    \"food_category\": \"Burger\",\n    \"food_price\": 5100,\n    \"food_image\": \"Jalapeno.png\"\n  }\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "8f5b1fbe-e766-4f13-a567-e35b5a3a9150",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "6a1a8c2a-d63c-40bb-a8f8-75f041604863",
+            "name": "placeOrder (post) a rendelés leadása",
+            "url": "http://localhost:3000/order/placeOrder",
+            "method": "POST",
+            "sortNum": 160000,
+            "created": "2023-04-27T22:05:09.792Z",
+            "modified": "2023-04-27T22:08:16.740Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"selectedAddress\": {\n    \"id\": 35,\n    \"address\": \"dashdf 13\",\n    \"city\": \"Malo\",\n    \"postalCode\": \"2234\",\n    \"mobileNumber\": \"0000\"\n  }\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "1d7f15fe-9487-46cc-aba8-13a72db8ec64",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "4b52ce29-30b2-47c1-9770-a20f033c2e08",
+            "name": "cart (delete) kosárban lévő elem törlése",
+            "url": "http://localhost:3000/cart/4edd584b-66d1-4be1-b0ca-4bf98ff21d6f",
+            "method": "DELETE",
+            "sortNum": 170000,
+            "created": "2023-04-27T21:53:16.665Z",
+            "modified": "2023-04-27T21:54:29.400Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "a8dc5583-9530-4949-8446-0100722a40d8",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "6a1a8c2a-d63c-40bb-a8f8-75f041604863",
+            "name": "placeOrder (post) a rendelés leadása ha rossz szállítási címet ad meg",
+            "url": "http://localhost:3000/order/placeOrder",
+            "method": "POST",
+            "sortNum": 170000,
+            "created": "2023-04-27T22:08:50.975Z",
+            "modified": "2023-04-27T22:12:57.122Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"selectedAddress\": {\n    \"id\": 34,\n    \"address\": \"dashdf 13\",\n    \"city\": \"Malo\",\n    \"postalCode\": \"2234\",\n    \"mobileNumber\": \"0000\"\n  }\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "7c00d5c0-cdb9-4ff0-8d4b-54f931a3dee3",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "4b52ce29-30b2-47c1-9770-a20f033c2e08",
+            "name": "cart (delete) kosárban lévő elem törlése ha nem a megfelelő user probálja ",
+            "url": "http://localhost:3000/cart/bf6b9184-bbf9-4d49-96a2-babe7d801a2d",
+            "method": "DELETE",
+            "sortNum": 180000,
+            "created": "2023-04-27T21:54:44.200Z",
+            "modified": "2023-04-27T21:55:53.561Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "bf6b9184-bbf9-4d49-96a2-babe7d801a2d"
+            },
+            "tests": []
+        },
+        {
+            "_id": "f46dd377-320a-4f5e-9a71-cb3c26c300ba",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "6a1a8c2a-d63c-40bb-a8f8-75f041604863",
+            "name": "placeOrder (post) a rendelés leadása ha már van aktív rendelése",
+            "url": "http://localhost:3000/order/placeOrder",
+            "method": "POST",
+            "sortNum": 180000,
+            "created": "2023-04-27T22:12:15.141Z",
+            "modified": "2023-04-27T22:12:45.669Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"selectedAddress\": {\n    \"id\": 33,\n    \"address\": \"dashdf 13\",\n    \"city\": \"Malo\",\n    \"postalCode\": \"2234\",\n    \"mobileNumber\": \"0000\"\n  }\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        },
+        {
+            "_id": "68168920-4be9-4abb-b81d-6dd0b7282328",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "6a1a8c2a-d63c-40bb-a8f8-75f041604863",
+            "name": "order (patch) a rendelés státuszának modósítása a megfelelő jogokkal",
+            "url": "http://localhost:3000/order/1da6d9e8-5595-492a-816f-d91b77060fbb",
+            "method": "PATCH",
+            "sortNum": 190000,
+            "created": "2023-04-27T22:13:38.395Z",
+            "modified": "2023-04-27T22:16:08.669Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"status\" : \"Kiszállítva\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "163f088b929bd643e222e90cc5cb32aedf0036cf7ecd064bfb113d7f438265fd"
+            },
+            "tests": []
+        },
+        {
+            "_id": "76051d8e-400a-4ac5-bfd8-90789337f04f",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "6a1a8c2a-d63c-40bb-a8f8-75f041604863",
+            "name": "order (patch) a rendelés státuszának modósítása a nem megfelelő jogokkal ",
+            "url": "http://localhost:3000/order/1da6d9e8-5595-492a-816f-d91b77060fbb",
+            "method": "PATCH",
+            "sortNum": 200000,
+            "created": "2023-04-27T22:16:33.938Z",
+            "modified": "2023-04-27T22:17:02.828Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"status\" : \"Kiszállítva\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "fd21db27544bdeafdcc4a043bf2139f4f6ec31f636dbf8843106ed7498920324"
+            },
+            "tests": []
+        }
+    ]
+}

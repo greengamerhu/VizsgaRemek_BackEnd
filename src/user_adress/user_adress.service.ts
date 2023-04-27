@@ -56,8 +56,8 @@ export class UserAdressService {
     const orderRepo = this.dataSource.getRepository(Order)
     const userAdressRepo = this.dataSource.getRepository(UserAddress)
     const Address = await userAdressRepo.findOne({where : {id}, relations : {user : true}})
-    if(Address.user.id != user.id) {
-      throw new BadRequestException(["A megadott id nem található ezen az felhasználon"])
+    if( !Address || Address.user.id != user.id) {
+      throw new BadRequestException(["A megadott szállítási cím nem található ezen az felhasználon"])
 
     }
     const currentOrder = await orderRepo.findOne({where : {status : Not("Kiszállítva"), user : user, selectedAddress : Address}, relations :{ user : true}})
