@@ -16,8 +16,8 @@ async function bootstrap() {
      just use the correct path if you use another folder.
   */
      const config = new DocumentBuilder()
-     .setTitle('Food Order app')
-     .setDescription('The Food order API leírása')
+     .setTitle('BiteMe Burger app')
+     .setDescription('API leírás')
      .build();
    const document = SwaggerModule.createDocument(app, config);
    SwaggerModule.setup('docs', app, document);
