@@ -17,7 +17,7 @@ export class UserAddress {
     @Column()
     mobileNumber : string
 
-    @ManyToOne(() => User, user => user.id)
+    @ManyToOne(() => User, user => user.id, {onDelete : "CASCADE"})
     @JoinColumn({ name: 'userId' })
     user: User;
     

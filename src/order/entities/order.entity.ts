@@ -11,7 +11,7 @@ export class Order {
     @PrimaryGeneratedColumn('uuid')
     id: string
 
-    @ManyToOne(type => User, user => user.id)
+    @ManyToOne(type => User, user => user.id, {onDelete : "CASCADE"})
     user : User
 
     @ManyToOne(type => UserAddress, UserAddress => UserAddress.id, {onDelete : "SET NULL"})
