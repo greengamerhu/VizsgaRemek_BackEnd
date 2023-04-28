@@ -53,6 +53,8 @@ $ npm run start:prod
 ## Mielött futatnád az alkalmazást
 .env.example fájlban megtalálod az adatbázis kapcsolat beállításait ha kész vagy a beállításával akkor töröld ki a **.example**-t a fájlból
 ### .env.example
+
+Mivel az alkalmazások a localhost:3000-re vannak configolva ezért nem ajánlott ezeket változtatni
 ```bash
 PORT=3000
 DB_HOST=localhost
