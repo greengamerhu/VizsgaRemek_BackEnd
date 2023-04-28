@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "BiteMe_Burger_Végpont_tesztek",
-    "dateExported": "2023-04-27T22:30:49.471Z",
+    "dateExported": "2023-04-28T12:30:24.799Z",
     "version": "1.1",
     "folders": [
         {
@@ -58,6 +58,25 @@
             "sortNum": 30000,
             "created": "2023-04-27T19:49:27.406Z",
             "modified": "2023-04-27T19:56:55.271Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\" : \"teszt@example.com\",\n  \"fullName\" : \"Teszt Elek\",\n  \"password\" : \"123\",\n  \"repassword\" : \"123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e0f0dd84-2be2-4817-a95e-406c8c3486a9",
+            "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
+            "containerId": "69c298da-f040-4b6d-9e58-d82a2f598d06",
+            "name": "/register(post) ha már az email be van regelve",
+            "url": "http://localhost:3000/user/register",
+            "method": "POST",
+            "sortNum": 35000,
+            "created": "2023-04-28T12:22:13.387Z",
+            "modified": "2023-04-28T12:22:13.387Z",
             "headers": [],
             "params": [],
             "body": {
@@ -293,7 +312,7 @@
             "method": "DELETE",
             "sortNum": 90000,
             "created": "2023-04-27T20:22:24.492Z",
-            "modified": "2023-04-27T20:36:08.122Z",
+            "modified": "2023-04-28T12:24:55.387Z",
             "headers": [],
             "params": [],
             "body": {
@@ -303,7 +322,7 @@
             },
             "auth": {
                 "type": "bearer",
-                "bearer": " (ide az  elöző lloginból érdemes berakni a tokent )"
+                "bearer": "0f0013728c1b151b5a4ec68c5dac6a39fae598f6811a4453f3a56b17cd5c8ada"
             },
             "tests": []
         },
@@ -418,11 +437,11 @@
             "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
             "containerId": "98e896dd-aa9f-411c-a3b8-5f0288944152",
             "name": "menu (delete) étel törlése a megfelelő jogosultságal ",
-            "url": "http://localhost:3000/menu/14",
+            "url": "http://localhost:3000/menu/15",
             "method": "DELETE",
             "sortNum": 103750,
             "created": "2023-04-27T21:23:34.141Z",
-            "modified": "2023-04-27T21:23:56.231Z",
+            "modified": "2023-04-28T12:27:56.354Z",
             "headers": [],
             "params": [],
             "auth": {
@@ -482,11 +501,11 @@
             "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
             "containerId": "98e896dd-aa9f-411c-a3b8-5f0288944152",
             "name": "menu (post)   étel  Módosítása a nem megfelelő jogosultságal",
-            "url": "http://localhost:3000/menu/14",
+            "url": "http://localhost:3000/menu/15",
             "method": "PATCH",
             "sortNum": 115000,
             "created": "2023-04-27T21:21:15.474Z",
-            "modified": "2023-04-27T21:26:37.602Z",
+            "modified": "2023-04-28T12:28:05.898Z",
             "headers": [],
             "params": [],
             "body": {
@@ -559,11 +578,11 @@
             "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
             "containerId": "51461879-c011-46a7-9cd7-8e8d953e2eb2",
             "name": "user-address (delete) ha user címet akar törölni",
-            "url": "http://localhost:3000/user-address/39",
+            "url": "http://localhost:3000/user-address/40",
             "method": "DELETE",
             "sortNum": 130000,
             "created": "2023-04-27T20:54:11.603Z",
-            "modified": "2023-04-27T20:54:34.652Z",
+            "modified": "2023-04-28T12:26:56.370Z",
             "headers": [],
             "params": [],
             "auth": {
@@ -773,11 +792,11 @@
             "colId": "56f1a00a-fa19-47e9-a9a6-1b8d06a3ee64",
             "containerId": "4b52ce29-30b2-47c1-9770-a20f033c2e08",
             "name": "cart (delete) kosárban lévő elem törlése",
-            "url": "http://localhost:3000/cart/4edd584b-66d1-4be1-b0ca-4bf98ff21d6f",
+            "url": "http://localhost:3000/cart/caa56169-463a-4709-8552-f6a6dbaff959",
             "method": "DELETE",
             "sortNum": 170000,
             "created": "2023-04-27T21:53:16.665Z",
-            "modified": "2023-04-27T21:54:29.400Z",
+            "modified": "2023-04-28T12:29:19.817Z",
             "headers": [],
             "params": [],
             "auth": {
