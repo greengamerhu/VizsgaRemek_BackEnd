@@ -22,51 +22,94 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Leírás
+Ez a **BiteMe Burger** Applikációnak a Backend-je ami egy VizsgaProjektre készült
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+## Telepítés
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Az alakalmazás futtatása (olvasd el lentebb is)
 
 ```bash
-# development
+# fejlesztői
 $ npm run start
 
-# watch mode
+# Változtatások automatikus applikálása
 $ npm run start:dev
 
-# production mode
+# "Kulcsrakész"
 $ npm run start:prod
 ```
 
-## Test
+## Tesztesetek
 
+<p align="left">
+ A végpontTesztek a  <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/main/thunder-collection_BiteMe_Burger_V%C3%A9gpont_tesztek_final.json" target="blank">thunder-collection_BiteMe_Burger_Végpont_tesztek_final.json</a> fájlban elérhetőek amit egy egyszerű Thunder Client-es import-al már használható is
+</p>
+
+## Mielött futatnád az alkalmazást
+.env.example fájlban megtalálod az adatbázis kapcsolat beállításait ha kész vagy a beállításával akkor töröld ki a **.example**-t a fájlból
+### .env.example
+
+Mivel az alkalmazások a localhost:3000-re vannak configolva ezért nem ajánlott ezeket változtatni
 ```bash
-# unit tests
-$ npm run test
+PORT=3000
+DB_HOST=localhost
+DB_PORT=
+DB_USERNAME=root
+DB_PASSWORD=
+DB_DATABASE=vizsgadb
+```
+## Adatbázis
 
-# e2e tests
-$ npm run test:e2e
+<p align="left">
+ Ajánlott a repoban megtalálható <a href="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/main/vizsgadb_final.sql" target="blank">vizsgadb_final.sql</a> dump-ot használni
+</p>
 
-# test coverage
-$ npm run test:cov
+### Az adatbázisban megtalálható felhaszálókhoz az adatok
+```bash
+Admin: 
+- Email : admin@example.com
+- Pw : 123321
+User:
+- Email : joska@example.com
+- Pw : 123321
 ```
 
-## Support
+### Az adatbázis diagram
+<p align="center">
+  <img src="https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/main/Final_database_structure.png"  alt="adatazisdiagram" />
+</p>
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Dokumentáció
+### Végpontok
+A végpont dokumentáció elérhető a **/docs** végponton
+### Fejlesztői
+A fejlesztői dokumentáció elérhető a repoban megtalálható [/docs/index.html](https://github.com/greengamerhu/VizsgaRemek_BackEnd/blob/main/docs/index.html)
 
-## Stay in touch
+## Az alkalmazás többi része
+### Mobil
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+[BiteMe Burger App](https://github.com/greengamerhu/Vizsgaremek_android)
+
+> Fejlesztő: [Rimóczi Dániel](https://github.com/greengamerhu) 
+
+### Weboldal
+
+[BiteMe Burger Weboldal](https://github.com/Juhaszcsenge/frontend_vizsga)
+
+> Fejlesztő: [Juhász Csenge](https://github.com/Juhaszcsenge) 
+
+
+### Asztali alkalmazás
+
+[BiteMe Burger AdminTool](https://github.com/Elcsa/vizsgarremek)
+
+> Fejlesztő: [Fekete Edina](https://github.com/Elcsa) 
+
 
 ## License
 
