@@ -35,7 +35,7 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe({forbidUnknownValues: false}));
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
-
+  
   await app.listen(process.env.PORT || 3000);
 }
 bootstrap();

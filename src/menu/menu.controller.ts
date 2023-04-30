@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Put } from '@nestjs/common';
 import { MenuService } from './menu.service';
 import  CreateMenuDto  from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
@@ -30,8 +30,6 @@ export class MenuController {
     return this.menuService.findAll();
   }
 
-
-
   @Patch(':id')
   @UseGuards(AuthGuard('bearer'), RolesGuard)
   @Roles(Role.Admin)
@@ -45,6 +43,23 @@ export class MenuController {
     description : "Az étel modósításához szükséges adatok"
   } )
   update(@Param('id') id: string, @Body() updateMenuDto: UpdateMenuDto) {
+    return this.menuService.update(+id, updateMenuDto);
+  }
+
+  @Put
+  (':id')
+  @UseGuards(AuthGuard('bearer'), RolesGuard)
+  @Roles(Role.Admin)
+  @ApiOperation({ description: 'Étel Módosítása, admin jogosultsággal, az asztali alkalmazás számára' })
+  @ApiParam({
+    name : "id", 
+    description : "Az étel id-ja hogy lehessen módosítani"
+  } )
+  @ApiParam({
+    name : "updateMenuDto",
+    description : "Az étel modósításához szükséges adatok"
+  } )
+  update2(@Param('id') id: string, @Body() updateMenuDto: UpdateMenuDto) {
     return this.menuService.update(+id, updateMenuDto);
   }
   
